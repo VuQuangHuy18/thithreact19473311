@@ -1,12 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useRef, useState } from 'react';
+import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Button, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import App1 from './App1';
+import App2 from './App2';
+import App3 from './App3';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer >
+
+      {/* init là chọn trang hien thi ban dau mac dinh la dong dau tien
+    headShoewn hiern thị tên trang*/}
+      <Stack.Navigator initialRouteName='App 1' screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='App 1' component={App1} />
+        <Stack.Screen name='App 2' component={App2} />
+        <Stack.Screen name='App 3' component={App3} />
+       
+
+      </Stack.Navigator>
+
+
+    </NavigationContainer>
   );
 }
 
